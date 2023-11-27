@@ -4,9 +4,9 @@ LIB			=	libft.a
 
 MAIN		=	main.c
 
-SRC			=	push_swap.c		\
-				utils.c			\
-				main.c
+SRC			=	src/push_swap.c		\
+				src/utils.c			\
+				src/main.c
 
 OBJ			=	$(SRC:.c=.o)
 
