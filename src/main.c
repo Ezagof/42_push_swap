@@ -6,7 +6,7 @@
 /*   By: aautin <aautin@student.42.fr >             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 17:17:25 by aautin            #+#    #+#             */
-/*   Updated: 2023/12/02 00:41:03 by aautin           ###   ########.fr       */
+/*   Updated: 2023/12/02 15:20:15 by aautin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,26 +22,34 @@ static int	ft_putinlst(t_list **lst, char *argv)
 		return (0);
 	i = -1;
 	while (str[++i])
-		ft_lstadd_back(lst, ft_lstnew(ft_atoi(str[i])));
+	{
+		ft_lstadd_front(lst, ft_lstnew(ft_atoi(str[i])));
+		free(str[i]);
+	}
+	free(str);
 	return (1);
 }
 
 int	main(int argc, char *argv[])
 {
-	t_list	*a_lst;
+	t_list	*lst_a;
+	t_list	*lst_b;
 
-	a_lst = NULL;
+	lst_a = NULL;
+	lst_b = NULL;
 	if (argc == 2)
 	{
-		if (!ft_putinlst(&a_lst, argv[1]))
+		if (!ft_putinlst(&lst_a, argv[1]))
 			return (1);
-		// swap_a(a_lst);
 	}
 	else
 	{
 		while (argc > 1)
-			ft_lstadd_back(&a_lst, ft_lstnew(ft_atoi(argv[--argc])));
+			ft_lstadd_back(&lst_a, ft_lstnew(ft_atoi(argv[--argc])));
 	}
-	ft_printlst(a_lst);
+	ft_printlsts(lst_a, lst_b);
+	ft_printf("%d\n", push_swap(lst_a, lst_b));
+	ft_lstclear(&lst_a);
+	ft_lstclear(&lst_b);
 	return (0);
 }

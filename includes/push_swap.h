@@ -6,7 +6,7 @@
 /*   By: aautin <aautin@student.42.fr >             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 17:09:34 by aautin            #+#    #+#             */
-/*   Updated: 2023/12/02 00:34:04 by aautin           ###   ########.fr       */
+/*   Updated: 2023/12/02 15:12:06 by aautin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,15 @@
 
 // utils.c
 void	ft_printlst(t_list *lst);
+void	ft_printlsts(t_list	*lst_a, t_list *lst_b);
 
-// mandatories
-void	swap_a(t_list *a);
+// push_swap.c
+int	push_swap(t_list *lst_a, t_list *lst_b);
+
+// mandatories : swap.c / rotate.c
+int	swap_a(t_list *a);
+int	swap_b(t_list *a);
+int	swap_s(t_list *lst_a, t_list *lst_b);
 
 // main.c
 int		main(int argc, char *argv[]);
