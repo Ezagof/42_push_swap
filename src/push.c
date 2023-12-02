@@ -6,31 +6,23 @@
 /*   By: aautin <aautin@student.42.fr >             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 15:36:31 by aautin            #+#    #+#             */
-/*   Updated: 2023/12/02 20:31:50 by aautin           ###   ########.fr       */
+/*   Updated: 2023/12/02 20:45:05 by aautin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-static void	erase_lastnode(t_list **lst)
-{
-	t_list	*temp;
-	t_list	**lastnode;
-
-	temp = ft_lstlast(*lst);
-	lastnode = lst;
-	while ((*lastnode)->next->next)
-		*lastnode = (*lastnode)->next;
-	(*lastnode)->next = NULL;
-	free(temp);
-}
 
 int	push_a(t_list *lst_a, t_list *lst_b)
 {
+	t_list	*temp1;
+	t_list	*temp2;
+
 	if (lst_b)
 	{
-		ft_lstadd_back(&lst_a, ft_lstnew(ft_lstlast(lst_b)->value));
-		erase_lastnode(&lst_b);
+		temp1 = ft_lstlast(lst_b);
+		temp2 = ft_lstlast(lst_a);
+		temp2->next = temp1;
 		ft_printf("pa\n");
 		return (1);
 	}
@@ -39,10 +31,14 @@ int	push_a(t_list *lst_a, t_list *lst_b)
 
 int	push_b(t_list *lst_a, t_list *lst_b)
 {
+	t_list	*temp1;
+	t_list	*temp2;
+
 	if (lst_a)
 	{
-		ft_lstadd_back(&lst_b, ft_lstnew(ft_lstlast(lst_a)->value));
-		erase_lastnode(&lst_a);
+		temp1 = ft_lstlast(lst_a);
+		temp2 = ft_lstlast(lst_b);
+		temp2->next = temp1;
 		ft_printf("pb\n");
 		return (1);
 	}
