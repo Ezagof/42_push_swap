@@ -6,7 +6,7 @@
 /*   By: aautin <aautin@student.42.fr >             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 23:39:43 by aautin            #+#    #+#             */
-/*   Updated: 2023/12/02 15:19:35 by aautin           ###   ########.fr       */
+/*   Updated: 2023/12/02 15:44:43 by aautin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	swap_b(t_list *lst)
 		while (lst->next->next)
 			lst = lst->next;
 		swap(lst, lst->next);
-		ft_printf("sb\n");
+		ft_printf("%s\n");
 		return (1);
 	}
 	return (0);
