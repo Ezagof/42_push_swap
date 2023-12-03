@@ -6,7 +6,7 @@
 /*   By: aautin <aautin@student.42.fr >             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 15:36:31 by aautin            #+#    #+#             */
-/*   Updated: 2023/12/03 18:41:14 by aautin           ###   ########.fr       */
+/*   Updated: 2023/12/03 19:09:06 by aautin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ static void	ft_lstremove_front(t_list **lst)
 {
 	t_list	*prev_first;
 	t_list	*next_first;
-
 
 	if (lst == NULL || *lst == NULL)
 		return ;
