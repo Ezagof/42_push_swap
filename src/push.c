@@ -6,40 +6,79 @@
 /*   By: aautin <aautin@student.42.fr >             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 15:36:31 by aautin            #+#    #+#             */
-/*   Updated: 2023/12/02 20:45:05 by aautin           ###   ########.fr       */
+/*   Updated: 2023/12/03 16:01:19 by aautin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-
-int	push_a(t_list *lst_a, t_list *lst_b)
+static void	ft_lstremove_back(t_list **lst)
 {
-	t_list	*temp1;
-	t_list	*temp2;
+	t_list *current;
+	t_list *prev;
 
-	if (lst_b)
+	current = *lst;
+	if (current->next == NULL)
 	{
-		temp1 = ft_lstlast(lst_b);
-		temp2 = ft_lstlast(lst_a);
-		temp2->next = temp1;
+		*lst = NULL;
+		free(*lst);
+		return ;
+	}
+	if (lst == NULL || *lst == NULL || (*lst)->next == NULL)
+		return;
+	while (current->next)
+	{
+		prev = current;
+		current = current->next;
+	}
+	if (prev != NULL)
+		prev->next = NULL;
+	else
+		*lst = NULL;
+	free(current);
+}
+
+int	push_a(t_list **lst_a, t_list **lst_b)
+{
+	t_list	*first_node;
+
+	if (*lst_b != NULL)
+	{
+		if (*lst_a == NULL)
+			*lst_a = ft_lstnew(ft_lstlast(*lst_b)->value);
+		else
+		{
+			first_node = *lst_a;
+			while ((*lst_a)->next)
+				*lst_a = (*lst_a)->next;
+			(*lst_a)->next = ft_lstnew(ft_lstlast(*lst_b)->value);
+			*lst_a = first_node;
+		}
 		ft_printf("pa\n");
+		ft_lstremove_back(lst_b);
 		return (1);
 	}
 	return (0);
 }
 
-int	push_b(t_list *lst_a, t_list *lst_b)
+int	push_b(t_list **lst_a, t_list **lst_b)
 {
-	t_list	*temp1;
-	t_list	*temp2;
+	t_list	*first_node;
 
-	if (lst_a)
+	if (*lst_a != NULL)
 	{
-		temp1 = ft_lstlast(lst_a);
-		temp2 = ft_lstlast(lst_b);
-		temp2->next = temp1;
+		if (*lst_b == NULL)
+			*lst_b = ft_lstnew(ft_lstlast(*lst_a)->value);
+		else
+		{
+			first_node = *lst_b;
+			while ((*lst_b)->next)
+				*lst_b = (*lst_b)->next;
+			(*lst_b)->next = ft_lstnew(ft_lstlast(*lst_a)->value);
+			*lst_b = first_node;
+		}
 		ft_printf("pb\n");
+		ft_lstremove_back(lst_a);
 		return (1);
 	}
 	return (0);
