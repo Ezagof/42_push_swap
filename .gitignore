@@ -1,4 +1,4 @@
 *.o
 push_swap
-libft
 a.out
+libft.a
