@@ -6,7 +6,7 @@
 /*   By: aautin <aautin@student.42.fr >             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 15:59:23 by aautin            #+#    #+#             */
-/*   Updated: 2023/12/03 17:28:57 by aautin           ###   ########.fr       */
+/*   Updated: 2023/12/03 19:06:04 by aautin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,19 +17,25 @@ int	push_swap(t_list *lst_a, t_list *lst_b)
 	int	moves_nb;
 
 	moves_nb = 0;
-	moves_nb += swap_a(lst_a);
-	ft_printlsts(lst_a, lst_b);
+
+	moves_nb += push_b(&lst_a, &lst_b);
 	moves_nb += push_b(&lst_a, &lst_b);
 	ft_printlsts(lst_a, lst_b);
-	moves_nb += push_b(&lst_a, &lst_b);
+
+	moves_nb += rotate_a(&lst_a);
 	ft_printlsts(lst_a, lst_b);
-	moves_nb += push_b(&lst_a, &lst_b);
+
+	moves_nb += rotate_r(&lst_a, &lst_b);
 	ft_printlsts(lst_a, lst_b);
-	moves_nb += push_a(&lst_a, &lst_b);
-	ft_printlsts(lst_a, lst_b);
+
 	moves_nb += swap_s(lst_a, lst_b);
 	ft_printlsts(lst_a, lst_b);
+
 	moves_nb += push_b(&lst_a, &lst_b);
 	ft_printlsts(lst_a, lst_b);
+
+	moves_nb += push_a(&lst_a, &lst_b);
+	ft_printlsts(lst_a, lst_b);
+
 	return (moves_nb);
 }

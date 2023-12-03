@@ -6,7 +6,7 @@
 /*   By: aautin <aautin@student.42.fr >             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 15:59:33 by aautin            #+#    #+#             */
-/*   Updated: 2023/12/02 18:11:18 by aautin           ###   ########.fr       */
+/*   Updated: 2023/12/03 18:53:07 by aautin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ void	ft_printlsts(t_list	*lst_a, t_list *lst_b)
 {
 	ft_printf("\n");
 	ft_printlst(lst_a);
-	ft_printf("      +      \n");
 	ft_printlst(lst_b);
 	ft_printf("\n");
 }

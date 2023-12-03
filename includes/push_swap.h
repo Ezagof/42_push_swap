@@ -6,7 +6,7 @@
 /*   By: aautin <aautin@student.42.fr >             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 17:09:34 by aautin            #+#    #+#             */
-/*   Updated: 2023/12/03 17:38:57 by aautin           ###   ########.fr       */
+/*   Updated: 2023/12/03 19:03:30 by aautin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int		push_b(t_list **lst_a, t_list **lst_b);
 // rotate.c
 int		rotate_a(t_list **lst_a);
 int		rotate_b(t_list **lst_b);
-int		rotate_s(t_list **lst_a, t_list **lst_b);
+int		rotate_r(t_list **lst_a, t_list **lst_b);
 // rotate_reverse.c
 //
 //---------

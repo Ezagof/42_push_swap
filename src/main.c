@@ -6,7 +6,7 @@
 /*   By: aautin <aautin@student.42.fr >             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 17:17:25 by aautin            #+#    #+#             */
-/*   Updated: 2023/12/03 13:40:19 by aautin           ###   ########.fr       */
+/*   Updated: 2023/12/03 18:54:23 by aautin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static int	ft_putinlst(t_list **lst, char *argv)
 	i = -1;
 	while (str[++i])
 	{
-		ft_lstadd_front(lst, ft_lstnew(ft_atoi(str[i])));
+		ft_lstadd_back(lst, ft_lstnew(ft_atoi(str[i])));
 		free(str[i]);
 	}
 	free(str);
