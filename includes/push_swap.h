@@ -36,7 +36,9 @@ int		rotate_a(t_list **lst_a);
 int		rotate_b(t_list **lst_b);
 int		rotate_r(t_list **lst_a, t_list **lst_b);
 // rotate_reverse.c
-//
+int		rotate_ra(t_list **lst_a);
+int		rotate_rb(t_list **lst_b);
+int		rotate_rr(t_list **lst_a, t_list **lst_b);
 //---------
 
 // main.c
