@@ -6,7 +6,7 @@
 /*   By: aautin <aautin@student.42.fr >             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 23:39:43 by aautin            #+#    #+#             */
-/*   Updated: 2023/12/02 15:44:43 by aautin           ###   ########.fr       */
+/*   Updated: 2023/12/03 17:15:54 by aautin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int	swap_b(t_list *lst)
 int	swap_s(t_list *lst_a, t_list *lst_b)
 {
 	int	moves;
-	
+
 	moves = 0;
 	if (ft_lstsize(lst_a) > 1)
 	{

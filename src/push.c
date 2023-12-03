@@ -6,7 +6,7 @@
 /*   By: aautin <aautin@student.42.fr >             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 15:36:31 by aautin            #+#    #+#             */
-/*   Updated: 2023/12/03 16:01:19 by aautin           ###   ########.fr       */
+/*   Updated: 2023/12/03 17:16:33 by aautin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static void	ft_lstremove_back(t_list **lst)
 {
-	t_list *current;
-	t_list *prev;
+	t_list	*current;
+	t_list	*prev;
 
 	current = *lst;
 	if (current->next == NULL)
@@ -25,7 +25,7 @@ static void	ft_lstremove_back(t_list **lst)
 		return ;
 	}
 	if (lst == NULL || *lst == NULL || (*lst)->next == NULL)
-		return;
+		return ;
 	while (current->next)
 	{
 		prev = current;
