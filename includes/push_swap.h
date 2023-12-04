@@ -16,8 +16,6 @@
 # include "../libft/includes/libft.h"
 # include "../libft/includes/ft_printf.h"
 
-// utils.c
-void	ft_printlsts(t_list	*lst_a, t_list *lst_b);
 
 // push_swap.c
 int		push_swap(t_list **lst_a, t_list **lst_b);
@@ -34,7 +32,12 @@ int		rotate_r(t_list **lst_a, t_list **lst_b);
 // rotate_reverse.c
 int		rotate_rev(t_list **lst, char name);
 int		rotate_rrev(t_list **lst_a, t_list **lst_b);
-//---------
+
+// utils.c
+void	ft_printlsts(t_list	*lst_a, t_list *lst_b);
+
+// inputs_errors.c
+int		ft_input_errors(int argc, char *argv[]);
 
 // main.c
 int		main(int argc, char *argv[]);

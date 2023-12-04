@@ -12,17 +12,6 @@
 
 #include "../includes/push_swap.h"
 
-static int	ft_inputs_error(int argc, char *argv[])
-{
-	(void) argc;
-	(void) argv;
-	// error =	same integer twice, 
-	//			an argv isnt an integer (overflow/other ASCII) : argc > 2 case
-	//			a splited value isnt an interger ("") : argc == 2 case
-	return (0);
-}
-
-
 static int	ft_putinlst(t_list **lst, char *argv)
 {
 	char	**str;
@@ -46,7 +35,7 @@ int	main(int argc, char *argv[])
 	t_list	*lst_a;
 	t_list	*lst_b;
 
-	if (ft_inputs_error(argc, argv))
+	if (ft_input_errors(argc, argv))
 	{
 		ft_printf("Error\n");
 		return (0);								// RETURN VALUE IN THIS CASE ?
