@@ -12,7 +12,7 @@
 
 #include "../includes/push_swap.h"
 
-void	ft_printlst(t_list *lst)
+static void	ft_printlst(t_list *lst)
 {
 	while (lst)
 	{

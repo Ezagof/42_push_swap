@@ -21,50 +21,40 @@ static t_list	*ft_lstbeforelast(t_list *lst)
 	return (lst);
 }
 
-// here, have to turn the lastone into first and the beforelastone into lastone
-
-static void	rotate(t_list **lst_a, t_list *top_node, t_list *bot_node)
+static void	move(t_list **lst)
 {
-	bot_node->next = top_node;
-	*lst_a = top_node->next;
-	top_node->next = NULL;
+	t_list	*beforelast_node;
+	t_list	*last_node;
+
+	beforelast_node = ft_lstbeforelast(*lst);
+	last_node = ft_lstlast(*lst);
+	last_node->next = *lst;
+	beforelast_node->next = NULL;
+	*lst = last_node;
 }
 
-int	rotate_ra(t_list **lst_a)
+int	rotate_rev(t_list **lst, char name)
 {
-	t_list	*top_node;
-	t_list	*bot_node;
-
-	top_node = *lst_a;
-	bot_node = ft_lstlast(*lst_a);
-	rotate(lst_a, top_node, bot_node);
-	ft_printf("ra\n");
-	return (1);
+	if (*lst && (*lst)->next)
+	{
+		move(lst);
+		if (name == 'a')
+			ft_printf("rra\n");
+		if (name == 'b')
+			ft_printf("rrb\n");
+		return (1);
+	}
+	return (0);
 }
 
-int	rotate_rb(t_list **lst_b)
+int	rotate_rrev(t_list **lst_a, t_list **lst_b)
 {
-	t_list	*top_node;
-	t_list	*bot_node;
-
-	top_node = *lst_b;
-	bot_node = ft_lstlast(*lst_b);
-	rotate(lst_b, top_node, bot_node);
-	ft_printf("rs\n");
-	return (1);
-}
-
-int	rotate_rr(t_list **lst_a, t_list **lst_b)
-{
-	t_list	*top_node;
-	t_list	*bot_node;
-
-	top_node = *lst_a;
-	bot_node = ft_lstlast(*lst_a);
-	rotate(lst_a, top_node, bot_node);
-	top_node = *lst_b;
-	bot_node = ft_lstlast(*lst_b);
-	rotate(lst_b, top_node, bot_node);
-	ft_printf("rr\n");
-	return (1);
+	if (*lst_a && (*lst_a)->next && *lst_b && (*lst_b)->next)
+	{
+		move(lst_a);
+		move(lst_b);
+		ft_printf("rrr\n");
+		return (2);
+	}
+	return (0);
 }
