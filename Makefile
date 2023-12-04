@@ -4,12 +4,13 @@ LIB			=	libft.a
 
 MAIN		=	main.c
 
-SRC			=	src/push_swap.c		\
-				src/utils.c			\
-				src/swap.c			\
-				src/push.c			\
-				src/rotate.c		\
-				src/main.c
+SRC			=	src/push_swap.c			\
+				src/utils.c				\
+				src/swap.c				\
+				src/push.c				\
+				src/rotate.c			\
+				src/main.c				\
+				# src/rotate_reverse.c	\
 
 OBJ			=	$(SRC:.c=.o)
 

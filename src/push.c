@@ -6,50 +6,33 @@
 /*   By: aautin <aautin@student.42.fr >             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 15:36:31 by aautin            #+#    #+#             */
-/*   Updated: 2023/12/03 19:09:06 by aautin           ###   ########.fr       */
+/*   Updated: 2023/12/04 17:00:41 by aautin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-static void	ft_lstremove_front(t_list **lst)
+static void	move(t_list **dest, t_list **src)
 {
-	t_list	*prev_first;
-	t_list	*next_first;
+	t_list	*dest_fst;
+	t_list	*src_fst;
 
-	if (lst == NULL || *lst == NULL)
-		return ;
-	prev_first = *lst;
-	next_first = (*lst)->next;
-	free(prev_first);
-	*lst = next_first;
+	dest_fst = *dest;
+	src_fst = *src;
+	*src = (*src)->next;
+	src_fst->next = dest_fst;
+	*dest = src_fst;
 }
 
-int	push_a(t_list **lst_a, t_list **lst_b)
+int	push(t_list **dest, t_list **src, char name)
 {
-	if (*lst_b != NULL)
+	if (*src != NULL)
 	{
-		if (*lst_a == NULL)
-			*lst_a = ft_lstnew((*lst_b)->value);
-		else
-			ft_lstadd_front(lst_a, ft_lstnew((*lst_b)->value));
-		ft_printf("pa\n");
-		ft_lstremove_front(lst_b);
-		return (1);
-	}
-	return (0);
-}
-
-int	push_b(t_list **lst_a, t_list **lst_b)
-{
-	if (*lst_a != NULL)
-	{
-		if (*lst_b == NULL)
-			*lst_b = ft_lstnew((*lst_a)->value);
-		else
-			ft_lstadd_front(lst_b, ft_lstnew((*lst_a)->value));
-		ft_printf("pb\n");
-		ft_lstremove_front(lst_a);
+		move(dest, src);
+		if (name == 'a')
+			ft_printf("pa\n");
+		if (name == 'b')
+			ft_printf("pb\n");
 		return (1);
 	}
 	return (0);

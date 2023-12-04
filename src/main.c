@@ -6,7 +6,7 @@
 /*   By: aautin <aautin@student.42.fr >             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 17:17:25 by aautin            #+#    #+#             */
-/*   Updated: 2023/12/03 18:54:23 by aautin           ###   ########.fr       */
+/*   Updated: 2023/12/04 16:55:25 by aautin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,10 @@ int	main(int argc, char *argv[])
 			return (1);
 	}
 	else
-	{
 		while (argc > 1)
-			ft_lstadd_back(&lst_a, ft_lstnew(ft_atoi(argv[--argc])));
-	}
+			ft_lstadd_front(&lst_a, ft_lstnew(ft_atoi(argv[--argc])));
 	ft_printlsts(lst_a, lst_b);
-	ft_printf("%d\n", push_swap(lst_a, lst_b));
+	ft_printf("%d\n", push_swap(&lst_a, &lst_b));
 	ft_lstclear(&lst_a);
 	ft_lstclear(&lst_b);
 	return (0);

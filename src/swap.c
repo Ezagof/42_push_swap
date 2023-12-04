@@ -6,13 +6,13 @@
 /*   By: aautin <aautin@student.42.fr >             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 23:39:43 by aautin            #+#    #+#             */
-/*   Updated: 2023/12/03 18:26:22 by aautin           ###   ########.fr       */
+/*   Updated: 2023/12/04 12:58:51 by aautin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void static	swap(t_list *a, t_list *b)
+void static	move(t_list *a, t_list *b)
 {
 	t_list	*temp;
 
@@ -22,23 +22,15 @@ void static	swap(t_list *a, t_list *b)
 	free(temp);
 }
 
-int	swap_a(t_list *lst)
+int	swap(t_list *lst, char name)
 {
 	if (lst && lst->next)
 	{
-		swap(lst, lst->next);
-		ft_printf("sa\n");
-		return (1);
-	}
-	return (0);
-}
-
-int	swap_b(t_list *lst)
-{
-	if (ft_lstsize(lst) > 1)
-	{
-		swap(lst, lst->next);
-		ft_printf("sb\n");
+		move(lst, lst->next);
+		if (name == 'a')
+			ft_printf("sa\n");
+		else if (name == 'b')
+			ft_printf("sb\n");
 		return (1);
 	}
 	return (0);
@@ -46,19 +38,12 @@ int	swap_b(t_list *lst)
 
 int	swap_s(t_list *lst_a, t_list *lst_b)
 {
-	int	moves;
-
-	moves = 0;
-	if (lst_a && lst_a->next)
+	if (lst_a && lst_a->next && lst_b && lst_b->next)
 	{
-		swap(lst_a, lst_a->next);
-		moves++;
+		move(lst_a, lst_a->next);
+		move(lst_b, lst_b->next);
+		ft_printf("ss\n");
+		return (2);
 	}
-	if (lst_b && lst_b->next)
-	{
-		swap(lst_b, lst_b->next);
-		moves++;
-	}
-	ft_printf("ss\n");
-	return (moves);
+	return (0);
 }
