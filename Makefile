@@ -11,7 +11,9 @@ SRC			=	src/push_swap.c			\
 				src/rotate.c			\
 				src/rotate_reverse.c	\
 				src/input_errors.c		\
-				src/printlst.c		\
+				src/printlst.c			\
+				src/quick_sort.c		\
+				src/sort_small_list.c	\
 				src/main.c
 
 OBJ			=	$(SRC:.c=.o)
@@ -25,7 +27,7 @@ $(NAME)	:	$(OBJ)
 			cp libft/libft.a $(LIB)
 			cc $(FLG) $(OBJ) -o $(NAME) $(LIB)
 
-.PHONY	:	all bonus clean fclean re
+.PHONY	:	all clean fclean re
 
 %.o		:	%.c
 			cc $(FLG) -c $< -o $@ -g3

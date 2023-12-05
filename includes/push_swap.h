@@ -6,7 +6,7 @@
 /*   By: aautin <aautin@student.42.fr >             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 17:09:34 by aautin            #+#    #+#             */
-/*   Updated: 2023/12/05 17:00:43 by aautin           ###   ########.fr       */
+/*   Updated: 2023/12/05 20:19:33 by aautin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,18 +19,18 @@
 # define INT_MIN -2147483648
 # define INT_MAX 2147483647
 
-// push_swap.c
-int			push_swap(t_list **lst_a, t_list **lst_b);
 
-//---------
 // swap.c
 int			swap(t_list *a, char name);
 int			swap_s(t_list *lst_a, t_list *lst_b);
+
 // push.c
 int			push(t_list **lst_a, t_list **lst_b, char name);
+
 // rotate.c
 int			rotate(t_list **lst, char name);
 int			rotate_r(t_list **lst_a, t_list **lst_b);
+
 // rotate_reverse.c
 int			rotate_rev(t_list **lst, char name);
 int			rotate_rrev(t_list **lst_a, t_list **lst_b);
@@ -48,6 +48,16 @@ long int	ft_atol(char *str);
 int			ft_nbs_combined(char *argv);
 int			ft_nbs_separated(int argc, char *argv[]);
 int			ft_unique_integers(t_list *lst);
+
+// quick_sort.c
+int	ft_quick_sort(t_list **lst_a, t_list **lst_b);
+
+// sort_small_list.c
+int			ft_sort_two_list(t_list **lst_a);
+int			ft_sort_three_list(t_list **l);
+
+// push_swap.c
+int			push_swap(t_list **lst_a, t_list **lst_b);
 
 // main.c
 int			ft_input_errors(int argc, char *argv[]);
