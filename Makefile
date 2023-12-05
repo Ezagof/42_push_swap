@@ -11,6 +11,7 @@ SRC			=	src/push_swap.c			\
 				src/rotate.c			\
 				src/rotate_reverse.c	\
 				src/input_errors.c		\
+				src/printlst.c		\
 				src/main.c
 
 OBJ			=	$(SRC:.c=.o)

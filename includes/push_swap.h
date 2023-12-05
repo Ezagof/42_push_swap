@@ -6,7 +6,7 @@
 /*   By: aautin <aautin@student.42.fr >             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 17:09:34 by aautin            #+#    #+#             */
-/*   Updated: 2023/12/05 16:20:19 by aautin           ###   ########.fr       */
+/*   Updated: 2023/12/05 16:57:43 by aautin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,10 @@ int			rotate_r(t_list **lst_a, t_list **lst_b);
 int			rotate_rev(t_list **lst, char name);
 int			rotate_rrev(t_list **lst_a, t_list **lst_b);
 
-// utils.c
+// printlst.c
 void		ft_printlsts(t_list	*lst_a, t_list *lst_b);
+
+// utils.c
 void		ft_lstsclear(t_list **lst_a, t_list **lst_b);
 int			ft_free_dbtab(char **str, int i);
 long int	ft_atol(char *str);
