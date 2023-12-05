@@ -6,7 +6,7 @@
 /*   By: aautin <aautin@student.42.fr >             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 17:17:25 by aautin            #+#    #+#             */
-/*   Updated: 2023/12/05 16:11:44 by aautin           ###   ########.fr       */
+/*   Updated: 2023/12/05 17:01:04 by aautin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,16 +34,6 @@ static int	ft_printf_error(char *str)
 {
 	ft_printf("%s\n", str);
 	return (1);
-}
-
-int	ft_input_errors(int argc, char *argv[])
-{
-	if (argc > 2)
-		return (ft_nbs_separated(argc, argv));
-	else if (argc == 2)
-		return (ft_nbs_combined(argv[1]));
-	else
-		return (1);
 }
 
 int	main(int argc, char *argv[])

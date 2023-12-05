@@ -6,7 +6,7 @@
 /*   By: aautin <aautin@student.42.fr >             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 16:04:17 by aautin            #+#    #+#             */
-/*   Updated: 2023/12/05 16:20:59 by aautin           ###   ########.fr       */
+/*   Updated: 2023/12/05 17:01:25 by aautin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,18 +31,6 @@ static int	ft_is_str_number(char *str)
 		i++;
 	}
 	return (digit_present);
-}
-
-static void	ft_lst_to_tab(int *tab, t_list *lst)
-{
-	size_t	i;
-
-	i = 0;
-	while (lst)
-	{
-		tab[i++] = lst->value;
-		lst = lst->next;
-	}
 }
 
 int	ft_nbs_separated(int argc, char *argv[])
@@ -110,4 +98,14 @@ int	ft_unique_integers(t_list *lst)
 	}
 	free(int_tab);
 	return (1);
+}
+
+int	ft_input_errors(int argc, char *argv[])
+{
+	if (argc > 2)
+		return (ft_nbs_separated(argc, argv));
+	else if (argc == 2)
+		return (ft_nbs_combined(argv[1]));
+	else
+		return (1);
 }

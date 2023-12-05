@@ -6,11 +6,23 @@
 /*   By: aautin <aautin@student.42.fr >             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 15:59:33 by aautin            #+#    #+#             */
-/*   Updated: 2023/12/05 16:57:18 by aautin           ###   ########.fr       */
+/*   Updated: 2023/12/05 17:00:24 by aautin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+
+void	ft_lst_to_tab(int *tab, t_list *lst)
+{
+	size_t	i;
+
+	i = 0;
+	while (lst)
+	{
+		tab[i++] = lst->value;
+		lst = lst->next;
+	}
+}
 
 void	ft_lstsclear(t_list **lst_a, t_list **lst_b)
 {

@@ -6,7 +6,7 @@
 /*   By: aautin <aautin@student.42.fr >             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 17:09:34 by aautin            #+#    #+#             */
-/*   Updated: 2023/12/05 16:57:43 by aautin           ###   ########.fr       */
+/*   Updated: 2023/12/05 17:00:43 by aautin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ void		ft_printlsts(t_list	*lst_a, t_list *lst_b);
 
 // utils.c
 void		ft_lstsclear(t_list **lst_a, t_list **lst_b);
+void		ft_lst_to_tab(int *tab, t_list *lst);
 int			ft_free_dbtab(char **str, int i);
 long int	ft_atol(char *str);
 
