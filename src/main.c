@@ -6,7 +6,7 @@
 /*   By: aautin <aautin@student.42.fr >             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 17:17:25 by aautin            #+#    #+#             */
-/*   Updated: 2023/12/04 16:55:25 by aautin           ###   ########.fr       */
+/*   Updated: 2023/12/05 16:11:44 by aautin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,29 +30,45 @@ static int	ft_putinlst(t_list **lst, char *argv)
 	return (1);
 }
 
+static int	ft_printf_error(char *str)
+{
+	ft_printf("%s\n", str);
+	return (1);
+}
+
+int	ft_input_errors(int argc, char *argv[])
+{
+	if (argc > 2)
+		return (ft_nbs_separated(argc, argv));
+	else if (argc == 2)
+		return (ft_nbs_combined(argv[1]));
+	else
+		return (1);
+}
+
 int	main(int argc, char *argv[])
 {
 	t_list	*lst_a;
 	t_list	*lst_b;
 
 	if (ft_input_errors(argc, argv))
-	{
-		ft_printf("Error\n");
-		return (0);								// RETURN VALUE IN THIS CASE ?
-	}
+		return (ft_printf_error("Error"));
 	lst_a = NULL;
 	lst_b = NULL;
 	if (argc == 2)
 	{
 		if (!ft_putinlst(&lst_a, argv[1]))
-			return (1);
+			return (ft_printf_error("Allocation error"));
 	}
 	else
 		while (argc > 1)
 			ft_lstadd_front(&lst_a, ft_lstnew(ft_atoi(argv[--argc])));
-	ft_printlsts(lst_a, lst_b);
+	if (!ft_unique_integers(lst_a))
+	{
+		ft_lstsclear(&lst_a, &lst_b);
+		return (ft_printf_error("Error"));
+	}
 	ft_printf("%d\n", push_swap(&lst_a, &lst_b));
-	ft_lstclear(&lst_a);
-	ft_lstclear(&lst_b);
+	ft_lstsclear(&lst_a, &lst_b);
 	return (0);
 }

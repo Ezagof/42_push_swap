@@ -6,7 +6,7 @@
 /*   By: aautin <aautin@student.42.fr >             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 17:31:34 by aautin            #+#    #+#             */
-/*   Updated: 2023/12/03 19:06:55 by aautin           ###   ########.fr       */
+/*   Updated: 2023/12/05 11:10:35 by aautin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,13 @@ static t_list	*ft_lstbeforelast(t_list *lst)
 
 static void	move(t_list **lst)
 {
-	t_list	*beforelast_node;
+	t_list	*prelast_node;
 	t_list	*last_node;
 
-	beforelast_node = ft_lstbeforelast(*lst);
+	prelast_node = ft_lstbeforelast(*lst);
 	last_node = ft_lstlast(*lst);
 	last_node->next = *lst;
-	beforelast_node->next = NULL;
+	prelast_node->next = NULL;
 	*lst = last_node;
 }
 
