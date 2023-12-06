@@ -14,6 +14,7 @@ SRC			=	src/push_swap.c			\
 				src/input_errors.c		\
 				src/printlst.c			\
 				src/sort_small_list.c	\
+				src/sorting.c			\
 				src/main.c
 
 OBJ			=	$(SRC:.c=.o)
