@@ -1,23 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   quick_sort.c                                       :+:      :+:    :+:   */
+/*   utils_2.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aautin <aautin@student.42.fr >             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/05 19:04:55 by aautin            #+#    #+#             */
-/*   Updated: 2023/12/05 20:59:26 by aautin           ###   ########.fr       */
+/*   Created: 2023/12/01 15:59:33 by aautin            #+#    #+#             */
+/*   Updated: 2023/12/06 17:34:07 by aautin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int	ft_quick_sort(t_list **lst_a, t_list **lst_b)
+int	ft_findcurrentplace(t_list *lst, t_list *node)
 {
-	int	moves_nb;
+	int	pos;
 
-	(void) lst_a;
-	(void) lst_b;
-	moves_nb = 0;
-	return (moves_nb);
+	pos = 0;
+	while (lst && lst->value != node->value)
+	{
+		lst = lst->next;
+		pos++;
+	}
+	return (pos);
 }

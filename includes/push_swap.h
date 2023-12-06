@@ -6,7 +6,7 @@
 /*   By: aautin <aautin@student.42.fr >             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 17:09:34 by aautin            #+#    #+#             */
-/*   Updated: 2023/12/05 20:19:33 by aautin           ###   ########.fr       */
+/*   Updated: 2023/12/06 18:54:14 by aautin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,20 +44,21 @@ void		ft_lst_to_tab(int *tab, t_list *lst);
 int			ft_free_dbtab(char **str, int i);
 long int	ft_atol(char *str);
 
+// utils_2.c
+int			ft_findcurrentplace(t_list *lst, t_list *node);
+
 // input_errors.c
 int			ft_nbs_combined(char *argv);
 int			ft_nbs_separated(int argc, char *argv[]);
 int			ft_unique_integers(t_list *lst);
 
-// quick_sort.c
-int	ft_quick_sort(t_list **lst_a, t_list **lst_b);
-
 // sort_small_list.c
-int			ft_sort_two_list(t_list **lst_a);
-int			ft_sort_three_list(t_list **l);
+void		ft_sort_two_list(t_list **lst_a);
+void		ft_sort_three_list(t_list **l);
+void		ft_sort_fourfive_list(t_list **lst_a, t_list **lst_b);
 
 // push_swap.c
-int			push_swap(t_list **lst_a, t_list **lst_b);
+void		push_swap(t_list **lst_a, t_list **lst_b);
 
 // main.c
 int			ft_input_errors(int argc, char *argv[]);
