@@ -6,7 +6,7 @@
 /*   By: aautin <aautin@student.42.fr >             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 16:04:17 by aautin            #+#    #+#             */
-/*   Updated: 2023/12/05 17:01:25 by aautin           ###   ########.fr       */
+/*   Updated: 2023/12/06 14:12:56 by aautin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,5 +107,5 @@ int	ft_input_errors(int argc, char *argv[])
 	else if (argc == 2)
 		return (ft_nbs_combined(argv[1]));
 	else
-		return (1);
+		return (0);
 }

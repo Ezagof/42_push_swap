@@ -6,7 +6,7 @@
 /*   By: aautin <aautin@student.42.fr >             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 17:17:25 by aautin            #+#    #+#             */
-/*   Updated: 2023/12/05 18:39:34 by aautin           ###   ########.fr       */
+/*   Updated: 2023/12/06 14:13:46 by aautin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ int	main(int argc, char *argv[])
 	t_list	*lst_a;
 	t_list	*lst_b;
 
+	if (argc == 1)
+		return (0);
 	if (ft_input_errors(argc, argv))
 		return (ft_printf_error("Error"));
 	lst_a = NULL;
