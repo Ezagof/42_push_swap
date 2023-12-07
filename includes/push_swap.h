@@ -6,7 +6,7 @@
 /*   By: aautin <aautin@student.42.fr >             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 17:09:34 by aautin            #+#    #+#             */
-/*   Updated: 2023/12/07 20:21:42 by aautin           ###   ########.fr       */
+/*   Updated: 2023/12/07 21:19:15 by aautin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,11 @@ int			ft_free_dbtab(char **str, int i);
 long int	ft_atol(char *str);
 
 // utils_2.c
+long int	abs(long int nb);
+int			ft_placeindex(t_list *lst, int value);
 int			ft_indexmin(t_list *lst);
 int			ft_findcurrentplace(t_list *lst, t_list *node);
+int			ft_indexmax(t_list *lst)
 
 // input_errors.c
 int			ft_nbs_combined(char *argv);
