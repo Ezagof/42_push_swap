@@ -6,7 +6,7 @@
 /*   By: aautin <aautin@student.42.fr >             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 17:17:25 by aautin            #+#    #+#             */
-/*   Updated: 2023/12/06 18:58:20 by aautin           ###   ########.fr       */
+/*   Updated: 2023/12/07 20:39:09 by aautin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ int	main(int argc, char *argv[])
 		return (ft_printf_error("Error"));
 	}
 	push_swap(&lst_a, &lst_b);
+	// ft_printlsts(lst_a, lst_b);
 	ft_lstsclear(&lst_a, &lst_b);
 	return (0);
 }
