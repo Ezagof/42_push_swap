@@ -6,36 +6,65 @@
 /*   By: aautin <aautin@student.42.fr >             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 15:59:33 by aautin            #+#    #+#             */
-/*   Updated: 2023/12/07 21:29:47 by aautin           ###   ########.fr       */
+/*   Updated: 2023/12/08 13:56:51 by aautin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-long int	abs(long int nb)
+int	ft_abs(int nb)
 {
 	if (nb < 0)
-		return (-nb)
+		return (-nb);
 	else
 		return (nb);
 }
 
+static void	ft_setup(t_conf *stack, t_list **lst)
+{
+	stack->i = 0;
+	stack->first = *lst;
+	stack->min = ft_indexmin(*lst);
+	stack->max = ft_indexmax(*lst);
+	while (stack->i < stack->max)
+	{
+		(*lst) = (*lst)->next;
+		(stack->i)++;
+	}
+}
+
 int	ft_placeindex(t_list *lst, int value)
 {
-	int	i;
+	t_conf	stack;
 
-	i = 0;
-	while (value > lst)
+	if (lst == NULL)
+		return (0);
+	ft_setup(&stack, &lst);
+	while (lst->next)
 	{
+		if (value > lst->value)
+			return (stack.i);
 		lst = lst->next;
-		i++;
+		(stack.i)++;
 	}
-	return (i);
+	if (lst->next == NULL && lst->value != stack.min)
+	{
+		stack.i = 0;
+		lst = stack.first;
+		while (lst->value != stack.min)
+		{
+			if (value > lst->value)
+				return (stack.i);
+			lst = lst->next;
+			(stack.i)++;
+		}
+	}
+	return (stack.i);
 }
 
 int	ft_indexmax(t_list *lst)
 {
-	int value;
+	int	value;
 	int	indexmax;
 	int	i;
 
@@ -57,7 +86,7 @@ int	ft_indexmax(t_list *lst)
 
 int	ft_indexmin(t_list *lst)
 {
-	int value;
+	int	value;
 	int	indexmin;
 	int	i;
 
@@ -75,18 +104,4 @@ int	ft_indexmin(t_list *lst)
 		i++;
 	}
 	return (indexmin);
-}
-
-// useless for now
-int	ft_findcurrentplace(t_list *lst, t_list *node)
-{
-	int	pos;
-
-	pos = 0;
-	while (lst && lst->value != node->value)
-	{
-		lst = lst->next;
-		pos++;
-	}
-	return (pos);
 }

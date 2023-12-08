@@ -6,7 +6,7 @@
 /*   By: aautin <aautin@student.42.fr >             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 15:59:33 by aautin            #+#    #+#             */
-/*   Updated: 2023/12/06 17:22:30 by aautin           ###   ########.fr       */
+/*   Updated: 2023/12/08 13:37:03 by aautin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,4 +64,18 @@ int	ft_free_dbtab(char **str, int i)
 	}
 	free(str);
 	return (1);
+}
+
+// useless for now
+int	ft_findcurrentplace(t_list *lst, t_list *node)
+{
+	int	pos;
+
+	pos = 0;
+	while (lst && lst->value != node->value)
+	{
+		lst = lst->next;
+		pos++;
+	}
+	return (pos);
 }
