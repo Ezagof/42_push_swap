@@ -6,7 +6,7 @@
 /*   By: aautin <aautin@student.42.fr >             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 17:09:34 by aautin            #+#    #+#             */
-/*   Updated: 2023/12/08 13:51:43 by aautin           ###   ########.fr       */
+/*   Updated: 2023/12/09 17:06:31 by aautin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ typedef struct s_conf
 {
 	t_list		*first;
 	int			i;
-	int			min;
-	int 		max;
+	int			min_i;
+	int 		max_i;
 	t_list		*min_mv_node;
 	int			min_mv_nb;
 	int			mv_nb;
@@ -35,7 +35,7 @@ int			swap(t_list *a, char name);
 int			swap_s(t_list *lst_a, t_list *lst_b);
 
 // push.c
-int			push(t_list **lst_a, t_list **lst_b, char name);
+int			push(t_list **dest, t_list **src, char name);
 
 // rotate.c
 int			rotate(t_list **lst, char name);
@@ -57,7 +57,7 @@ long int	ft_atol(char *str);
 
 // utils_2.c
 int			ft_abs(int nb);
-int			ft_placeindex(t_list *lst, int value);
+int			ft_i_place(t_list *lst, int value);
 int			ft_indexmin(t_list *lst);
 int			ft_indexmax(t_list *lst);
 

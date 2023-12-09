@@ -6,7 +6,7 @@
 /*   By: aautin <aautin@student.42.fr >             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 15:59:23 by aautin            #+#    #+#             */
-/*   Updated: 2023/12/08 16:39:13 by aautin           ###   ########.fr       */
+/*   Updated: 2023/12/09 17:11:43 by aautin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,13 @@ static int	ft_cheapest(int src_i, int dest_i, int src_size, int dest_size)
 	int	min_bot;
 
 	if (dest_i > src_i)
-		min_top = dest_i + 1;
+		min_top = dest_i;
 	else
-		min_top = src_i + 1;
+		min_top = src_i;
 	if (dest_i < src_i)
-		min_bot = dest_size - dest_i + 2;
+		min_bot = dest_size - dest_i + 1;
 	else
-		min_bot = src_size - src_i + 2;
+		min_bot = src_size - src_i + 1;
 	if (min_bot < min_top)
 		return (-min_bot);
 	else
@@ -40,11 +40,11 @@ static void	ft_eco_sending(t_list **dst, t_list **src)
 	stack.min_mv_nb = ft_lstsize(*src);
 	while (*src)
 	{
-		stack.mv_nb = ft_cheapest(stack.i, ft_placeindex(*dst, (*src)->value),
+		stack.mv_nb = ft_cheapest(stack.i, ft_i_place(*dst, (*src)->value),
 				ft_lstsize(stack.first), ft_lstsize(*dst));
 		if (ft_abs(stack.mv_nb) < ft_abs(stack.min_mv_nb))
 		{
-			stack.i = ft_placeindex(*dst, (*src)->value);
+			stack.i = ft_i_place(*dst, (*src)->value);
 			stack.min_mv_nb = stack.mv_nb;
 			stack.min_mv_node = *src;
 		}
@@ -69,22 +69,22 @@ static void	ft_eco_sending(t_list **dst, t_list **src)
 	{
 		while (stack.min_mv_nb < 1)
 		{
-			if (stack.min_mv_node != (*src) && stack.i > 0)
+			if (stack.min_mv_node != (*src) && stack.i <= ft_lstsize(*dst))
 				rotate_rrev(src, dst);
-			if (stack.min_mv_node != (*src) && stack.i <= 0)
+			if (stack.min_mv_node != (*src) && stack.i > ft_lstsize(*dst))
 				rotate_rev(src, 'a');
-			if (stack.min_mv_node == (*src) && stack.i > 0)
+			if (stack.min_mv_node == (*src) && stack.i <= ft_lstsize(*dst))
 				rotate_rev(dst, 'b');
 			(stack.min_mv_nb)++;
-			(stack.i)--;
+			(stack.i)++;
 		}
 	}
-	push(src, dst, 'b');
+	push(dst, src, 'b');
 }
 
 void	ft_sort_list(t_list **lst_a, t_list **lst_b)
 {
-	while (ft_lstsize(*lst_a))
+	while (ft_lstsize(*lst_a) > 0)
 		ft_eco_sending(lst_b, lst_a);
 	return ;
 }

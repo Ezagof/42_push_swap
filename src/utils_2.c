@@ -6,7 +6,7 @@
 /*   By: aautin <aautin@student.42.fr >             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 15:59:33 by aautin            #+#    #+#             */
-/*   Updated: 2023/12/08 13:56:51 by aautin           ###   ########.fr       */
+/*   Updated: 2023/12/09 17:11:19 by aautin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,34 +24,39 @@ static void	ft_setup(t_conf *stack, t_list **lst)
 {
 	stack->i = 0;
 	stack->first = *lst;
-	stack->min = ft_indexmin(*lst);
-	stack->max = ft_indexmax(*lst);
-	while (stack->i < stack->max)
+	stack->min_i = ft_indexmin(*lst);
+	stack->max_i = ft_indexmax(*lst);
+	while (stack->i < stack->max_i)
 	{
 		(*lst) = (*lst)->next;
 		(stack->i)++;
 	}
 }
 
-int	ft_placeindex(t_list *lst, int value)
+int	ft_i_place(t_list *lst, int value)
 {
 	t_conf	stack;
 
 	if (lst == NULL)
 		return (0);
 	ft_setup(&stack, &lst);
-	while (lst->next)
+	while (stack.i < stack.max_i)
+	{
+		lst = lst->next;
+		(stack.i)++;
+	}
+	while (lst)
 	{
 		if (value > lst->value)
 			return (stack.i);
 		lst = lst->next;
 		(stack.i)++;
 	}
-	if (lst->next == NULL && lst->value != stack.min)
+	if (stack.i != stack.min_i)
 	{
-		stack.i = 0;
 		lst = stack.first;
-		while (lst->value != stack.min)
+		stack.i = 0;
+		while (stack.i < stack.max_i)
 		{
 			if (value > lst->value)
 				return (stack.i);

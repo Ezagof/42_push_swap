@@ -6,7 +6,7 @@
 /*   By: aautin <aautin@student.42.fr >             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 17:18:31 by aautin            #+#    #+#             */
-/*   Updated: 2023/12/07 20:38:36 by aautin           ###   ########.fr       */
+/*   Updated: 2023/12/09 17:39:46 by aautin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,10 +55,10 @@ static void	ft_pushmin(t_list **dest, t_list **src)
 	}
 	else
 	{
-		while (indexmin - ft_lstsize(*src) + 2 > 0)
+		while (ft_lstsize(*src) - indexmin > 0)
 		{
 			rotate_rev(src, 'a');
-			indexmin--;
+			indexmin++;
 		}
 	}
 	push(dest, src, 'b');
