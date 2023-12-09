@@ -6,7 +6,7 @@
 /*   By: aautin <aautin@student.42.fr >             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 15:59:23 by aautin            #+#    #+#             */
-/*   Updated: 2023/12/09 17:11:43 by aautin           ###   ########.fr       */
+/*   Updated: 2023/12/09 19:52:34 by aautin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,7 @@ static void	ft_eco_sending(t_list **dst, t_list **src)
 	t_conf	stack;
 
 	stack.first = *src;
-	stack.min_mv_node = *src;
-	stack.min_mv_nb = ft_lstsize(*src);
+	stack.min_mv_nb = ft_lstsize(*src) + ft_lstsize(*dst);
 	while (*src)
 	{
 		stack.mv_nb = ft_cheapest(stack.i, ft_i_place(*dst, (*src)->value),
@@ -51,42 +50,60 @@ static void	ft_eco_sending(t_list **dst, t_list **src)
 		*src = (*src)->next;
 	}
 	*src = stack.first;
-	if (stack.min_mv_nb > 0)
+	if (stack.min_mv_nb >= 0)
 	{
 		while (stack.min_mv_nb > 0)
 		{
 			if (stack.min_mv_node != (*src) && stack.i > 0)
 				rotate_r(src, dst);
-			if (stack.min_mv_node != (*src) && stack.i <= 0)
+			else if (stack.min_mv_node != (*src) && stack.i <= 0)
 				rotate(src, 'a');
-			if (stack.min_mv_node == (*src) && stack.i > 0)
+			else if (stack.min_mv_node == (*src) && stack.i > 0)
 				rotate(dst, 'b');
 			(stack.min_mv_nb)--;
 			(stack.i)--;
 		}
+		push(dst, src, 'b');
 	}
 	else
 	{
-		while (stack.min_mv_nb < 1)
+		while (stack.min_mv_nb < 0)
 		{
-			if (stack.min_mv_node != (*src) && stack.i <= ft_lstsize(*dst))
+			if (stack.min_mv_node != (*src) && stack.i < ft_lstsize(*dst))
 				rotate_rrev(src, dst);
-			if (stack.min_mv_node != (*src) && stack.i > ft_lstsize(*dst))
+			if (stack.min_mv_node != (*src) && stack.i >= ft_lstsize(*dst))
 				rotate_rev(src, 'a');
-			if (stack.min_mv_node == (*src) && stack.i <= ft_lstsize(*dst))
+			if (stack.min_mv_node == (*src) && stack.i < ft_lstsize(*dst))
 				rotate_rev(dst, 'b');
 			(stack.min_mv_nb)++;
 			(stack.i)++;
 		}
+		push(dst, src, 'b');
+		rotate(dst, 'b');
 	}
-	push(dst, src, 'b');
 }
 
-void	ft_sort_list(t_list **lst_a, t_list **lst_b)
+void	ft_placemaxtop(t_list **lst)
 {
-	while (ft_lstsize(*lst_a) > 0)
-		ft_eco_sending(lst_b, lst_a);
-	return ;
+	int	i_max;
+
+	i_max = ft_indexmax(*lst);
+	if (i_max > ft_lstsize(*lst) / 2)
+	{
+		while (i_max < ft_lstsize(*lst))
+		{
+			rotate_rev(lst, 'b');
+			i_max++;
+		}
+	}
+	else
+	{
+		while (i_max)
+		{
+			rotate(lst, 'b');
+			i_max--;
+		}
+	}
 }
 
 void	push_swap(t_list **lst_a, t_list **lst_b)
@@ -105,5 +122,12 @@ void	push_swap(t_list **lst_a, t_list **lst_b)
 	else if (ft_lstsize(*lst_a) == 5)
 		ft_sort_five_list(lst_a, lst_b);
 	else
-		ft_sort_list(lst_a, lst_b);
+	{
+		while (ft_lstsize(*lst_a) > 0)
+			ft_eco_sending(lst_b, lst_a);
+		ft_placemaxtop(lst_b);
+		while (ft_lstsize(*lst_b) > 0)
+			push(lst_a, lst_b, 'a');
+		return ;
+	}
 }
