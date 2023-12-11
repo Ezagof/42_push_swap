@@ -1,8 +1,14 @@
 NAME		=	push_swap
 
+NAME_B		=	checker
+
 LIB			=	libft.a
 
-MAIN		=	main.c
+SRC_B		=	src/main.c				\
+				src/swap.c				\
+				src/push.c				\
+				src/rotate.c			\
+				src/rotate_reverse.c
 
 SRC			=	src/push_swap.c			\
 				src/sort_small_list.c	\
@@ -18,6 +24,8 @@ SRC			=	src/push_swap.c			\
 
 OBJ			=	$(SRC:.c=.o)
 
+OBJ_B		=	$(SRC_B:.c=.o)
+
 RM			=	rm -f
 
 FLG			=	-Wall -Wextra -Werror
@@ -27,7 +35,9 @@ $(NAME)	:	$(OBJ)
 			cp libft/libft.a $(LIB)
 			cc $(FLG) $(OBJ) -o $(NAME) $(LIB)
 
-.PHONY	:	all clean fclean re
+.PHONY	:	all clean fclean re bonus
+
+bonus	:	
 
 %.o		:	%.c
 			cc $(FLG) -c $< -o $@ -g3
