@@ -6,29 +6,78 @@
 /*   By: aautin <aautin@student.42.fr >             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 15:59:23 by aautin            #+#    #+#             */
-/*   Updated: 2023/12/09 19:52:34 by aautin           ###   ########.fr       */
+/*   Updated: 2023/12/11 16:23:25 by aautin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-static int	ft_cheapest(int src_i, int dest_i, int src_size, int dest_size)
+static void	ft_cheapest(t_conf *stack, int dst_i, int dst_size)
 {
 	int	min_top;
 	int	min_bot;
 
-	if (dest_i > src_i)
-		min_top = dest_i;
+	if (dst_i > stack->i)
+		min_top = dst_i;
 	else
-		min_top = src_i;
-	if (dest_i < src_i)
-		min_bot = dest_size - dest_i + 1;
+		min_top = stack->i;
+	if (dst_size - dst_i > ft_lstsize(stack->first) - stack->i)
+		min_bot = dst_size - dst_i;
 	else
-		min_bot = src_size - src_i + 1;
-	if (min_bot < min_top)
-		return (-min_bot);
-	else
-		return (min_top);
+		min_bot = ft_lstsize(stack->first) - stack->i;
+	if (min_bot + 1 < min_top && min_bot + 1 < ft_abs(stack->min_mv_nb)
+		&& min_bot != 0)
+	{
+		stack->min_mv_nb = -min_bot;
+		stack->rotate_dst = dst_size - dst_i + (ft_lstsize(stack->first) == 1);
+		stack->rotate_src = ft_lstsize(stack->first) - stack->i;
+	}
+	else if (min_top < ft_abs(stack->min_mv_nb))
+	{
+		stack->min_mv_nb = min_top;
+		stack->rotate_dst = dst_i;
+		stack->rotate_src = stack->i;
+	}
+}
+
+static void	apply_rotates_rev(t_conf *stk, t_list **dst, t_list **src)
+{
+	while (stk->rotate_src && stk->rotate_dst)
+	{
+		rotate_rrev(src, dst);
+		(stk->rotate_src)--;
+		(stk->rotate_dst)--;
+	}
+	while (stk->rotate_src)
+	{
+		rotate_rev(src, 'a');
+		(stk->rotate_src)--;
+	}
+	while (stk->rotate_dst)
+	{
+		rotate_rev(dst, 'b');
+		(stk->rotate_dst)--;
+	}
+}
+
+static void	apply_rotates(t_conf *stk, t_list **dst, t_list **src)
+{
+	while (stk->rotate_src && stk->rotate_dst)
+	{
+		rotate_r(src, dst);
+		(stk->rotate_src)--;
+		(stk->rotate_dst)--;
+	}
+	while (stk->rotate_src)
+	{
+		rotate(src, 'a');
+		(stk->rotate_src)--;
+	}
+	while (stk->rotate_dst)
+	{
+		rotate(dst, 'b');
+		(stk->rotate_dst)--;
+	}
 }
 
 static void	ft_eco_sending(t_list **dst, t_list **src)
@@ -37,73 +86,19 @@ static void	ft_eco_sending(t_list **dst, t_list **src)
 
 	stack.first = *src;
 	stack.min_mv_nb = ft_lstsize(*src) + ft_lstsize(*dst);
+	stack.i = 0;
 	while (*src)
 	{
-		stack.mv_nb = ft_cheapest(stack.i, ft_i_place(*dst, (*src)->value),
-				ft_lstsize(stack.first), ft_lstsize(*dst));
-		if (ft_abs(stack.mv_nb) < ft_abs(stack.min_mv_nb))
-		{
-			stack.i = ft_i_place(*dst, (*src)->value);
-			stack.min_mv_nb = stack.mv_nb;
-			stack.min_mv_node = *src;
-		}
+		ft_cheapest(&stack, ft_i_place(*dst, (*src)->value), ft_lstsize(*dst));
 		*src = (*src)->next;
+		(stack.i)++;
 	}
 	*src = stack.first;
 	if (stack.min_mv_nb >= 0)
-	{
-		while (stack.min_mv_nb > 0)
-		{
-			if (stack.min_mv_node != (*src) && stack.i > 0)
-				rotate_r(src, dst);
-			else if (stack.min_mv_node != (*src) && stack.i <= 0)
-				rotate(src, 'a');
-			else if (stack.min_mv_node == (*src) && stack.i > 0)
-				rotate(dst, 'b');
-			(stack.min_mv_nb)--;
-			(stack.i)--;
-		}
-		push(dst, src, 'b');
-	}
+		apply_rotates(&stack, dst, src);
 	else
-	{
-		while (stack.min_mv_nb < 0)
-		{
-			if (stack.min_mv_node != (*src) && stack.i < ft_lstsize(*dst))
-				rotate_rrev(src, dst);
-			if (stack.min_mv_node != (*src) && stack.i >= ft_lstsize(*dst))
-				rotate_rev(src, 'a');
-			if (stack.min_mv_node == (*src) && stack.i < ft_lstsize(*dst))
-				rotate_rev(dst, 'b');
-			(stack.min_mv_nb)++;
-			(stack.i)++;
-		}
-		push(dst, src, 'b');
-		rotate(dst, 'b');
-	}
-}
-
-void	ft_placemaxtop(t_list **lst)
-{
-	int	i_max;
-
-	i_max = ft_indexmax(*lst);
-	if (i_max > ft_lstsize(*lst) / 2)
-	{
-		while (i_max < ft_lstsize(*lst))
-		{
-			rotate_rev(lst, 'b');
-			i_max++;
-		}
-	}
-	else
-	{
-		while (i_max)
-		{
-			rotate(lst, 'b');
-			i_max--;
-		}
-	}
+		apply_rotates_rev(&stack, dst, src);
+	push(dst, src, 'b');
 }
 
 void	push_swap(t_list **lst_a, t_list **lst_b)

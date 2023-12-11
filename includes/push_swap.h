@@ -6,7 +6,7 @@
 /*   By: aautin <aautin@student.42.fr >             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 17:09:34 by aautin            #+#    #+#             */
-/*   Updated: 2023/12/09 19:33:32 by aautin           ###   ########.fr       */
+/*   Updated: 2023/12/11 16:21:06 by aautin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,10 @@ typedef struct s_conf
 	int			i;
 	int			min_i;
 	int 		max_i;
-	t_list		*min_mv_node;
 	int			min_mv_nb;
 	int			mv_nb;
+	int			rotate_src;
+	int			rotate_dst;
 }				t_conf;
 
 // swap.c
@@ -49,17 +50,17 @@ int			rotate_rrev(t_list **lst_a, t_list **lst_b);
 void		ft_printlsts(t_list	*lst_a, t_list *lst_b);
 
 // utils.c
-int			ft_findcurrentplace(t_list *lst, t_list *node);
 void		ft_lstsclear(t_list **lst_a, t_list **lst_b);
 void		ft_lst_to_tab(int *tab, t_list *lst);
-int			ft_free_dbtab(char **str, int i);
 long int	ft_atol(char *str);
+int			ft_free_dbtab(char **str, int i);
+int			ft_abs(int nb);
 
 // utils_2.c
-int			ft_abs(int nb);
 int			ft_i_place(t_list *lst, int value);
 int			ft_indexmin(t_list *lst);
 int			ft_indexmax(t_list *lst);
+void		ft_placemaxtop(t_list **lst);
 
 // input_errors.c
 int			ft_nbs_combined(char *argv);
