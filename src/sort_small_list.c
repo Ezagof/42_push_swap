@@ -6,7 +6,7 @@
 /*   By: aautin <aautin@student.42.fr >             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 17:18:31 by aautin            #+#    #+#             */
-/*   Updated: 2023/12/12 18:12:12 by aautin           ###   ########.fr       */
+/*   Updated: 2023/12/12 19:40:21 by aautin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,11 @@ void	ft_apply_rotates_mixed(t_conf *stk, t_list **dst, t_list **src)
 	{
 		rotate_rev(src, 'a');
 		(stk->rotate_src)++;
+	}
+	while (stk->rotate_dst > 0)
+	{
+		rotate(dst, 'b');
+		(stk->rotate_dst)--;
 	}
 	while (stk->rotate_dst < 0)
 	{
