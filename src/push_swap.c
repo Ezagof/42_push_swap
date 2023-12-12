@@ -6,7 +6,7 @@
 /*   By: aautin <aautin@student.42.fr >             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 15:59:23 by aautin            #+#    #+#             */
-/*   Updated: 2023/12/11 16:38:54 by aautin           ###   ########.fr       */
+/*   Updated: 2023/12/12 22:15:15 by aautin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,12 +50,12 @@ static void	apply_rotates_rev(t_conf *stk, t_list **dst, t_list **src)
 	}
 	while (stk->rotate_src)
 	{
-		rotate_rev(src, 'a');
+		rotate_rev(src, 'b');
 		(stk->rotate_src)--;
 	}
 	while (stk->rotate_dst)
 	{
-		rotate_rev(dst, 'b');
+		rotate_rev(dst, 'a');
 		(stk->rotate_dst)--;
 	}
 }
@@ -70,12 +70,12 @@ static void	apply_rotates(t_conf *stk, t_list **dst, t_list **src)
 	}
 	while (stk->rotate_src)
 	{
-		rotate(src, 'a');
+		rotate(src, 'b');
 		(stk->rotate_src)--;
 	}
 	while (stk->rotate_dst)
 	{
-		rotate(dst, 'b');
+		rotate(dst, 'a');
 		(stk->rotate_dst)--;
 	}
 }
@@ -98,7 +98,7 @@ static void	ft_eco_sending(t_list **dst, t_list **src)
 		apply_rotates(&stack, dst, src);
 	else
 		apply_rotates_rev(&stack, dst, src);
-	push(dst, src, 'b');
+	push(dst, src, 'a');
 }
 
 void	push_swap(t_list **lst_a, t_list **lst_b)
@@ -119,10 +119,10 @@ void	push_swap(t_list **lst_a, t_list **lst_b)
 	else
 	{
 		while (ft_lstsize(*lst_a) > 0)
-			ft_eco_sending(lst_b, lst_a);
-		ft_placemaxtop(lst_b);
+			push(lst_b, lst_a, 'b');
 		while (ft_lstsize(*lst_b) > 0)
-			push(lst_a, lst_b, 'a');
+			ft_eco_sending(lst_a, lst_b);
+		ft_placemintop(lst_a);
 		return ;
 	}
 }
