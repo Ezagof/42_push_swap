@@ -6,11 +6,19 @@
 /*   By: aautin <aautin@student.42.fr >             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 17:17:25 by aautin            #+#    #+#             */
-/*   Updated: 2023/12/11 15:55:26 by aautin           ###   ########.fr       */
+/*   Updated: 2023/12/12 16:16:36 by aautin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+
+int	ft_give_biggest(int nb1, int nb2)
+{
+	if (nb1 > nb2)
+		return (nb1);
+	else
+		return (nb2);
+}
 
 static int	ft_putinlst(t_list **lst, char *argv)
 {
@@ -34,6 +42,32 @@ static int	ft_printf_error(char *str)
 {
 	ft_printf("%s\n", str);
 	return (1);
+}
+
+void	push_swap(t_list **lst_a, t_list **lst_b)
+{
+	if (ft_lstsize(*lst_a) == 1)
+		return ;
+	if (ft_lstsize(*lst_a) == 2)
+	{
+		if ((*lst_a)->value > (*lst_a)->next->value)
+			rotate(lst_a, 'a');
+	}
+	else if (ft_lstsize(*lst_a) == 3)
+		ft_sort_three_list(lst_a);
+	else if (ft_lstsize(*lst_a) == 4)
+		ft_sort_four_list(lst_a, lst_b);
+	else if (ft_lstsize(*lst_a) == 5)
+		ft_sort_five_list(lst_a, lst_b);
+	else
+	{
+		while (ft_lstsize(*lst_a) > 0)
+			ft_eco_sending(lst_b, lst_a);
+		ft_placemaxtop(lst_b);
+		while (ft_lstsize(*lst_b) > 0)
+			push(lst_a, lst_b, 'a');
+		return ;
+	}
 }
 
 int	main(int argc, char *argv[])

@@ -6,11 +6,30 @@
 /*   By: aautin <aautin@student.42.fr >             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 17:18:31 by aautin            #+#    #+#             */
-/*   Updated: 2023/12/09 17:39:46 by aautin           ###   ########.fr       */
+/*   Updated: 2023/12/12 18:12:12 by aautin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+
+void	ft_apply_rotates_mixed(t_conf *stk, t_list **dst, t_list **src)
+{
+	while (stk->rotate_src > 0)
+	{
+		rotate(src, 'a');
+		(stk->rotate_src)--;
+	}
+	while (stk->rotate_src < 0)
+	{
+		rotate_rev(src, 'a');
+		(stk->rotate_src)++;
+	}
+	while (stk->rotate_dst < 0)
+	{
+		rotate_rev(dst, 'b');
+		(stk->rotate_dst)++;
+	}
+}
 
 void	ft_sort_three_list(t_list **l)
 {

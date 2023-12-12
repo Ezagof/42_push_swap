@@ -6,7 +6,7 @@
 /*   By: aautin <aautin@student.42.fr >             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 17:09:34 by aautin            #+#    #+#             */
-/*   Updated: 2023/12/11 16:21:06 by aautin           ###   ########.fr       */
+/*   Updated: 2023/12/12 16:19:38 by aautin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,9 @@ typedef struct s_conf
 	int			mv_nb;
 	int			rotate_src;
 	int			rotate_dst;
+	int			min_top;
+	int			min_bot;
+	int			min_is_mixed;
 }				t_conf;
 
 // swap.c
@@ -68,15 +71,18 @@ int			ft_nbs_separated(int argc, char *argv[]);
 int			ft_unique_integers(t_list *lst);
 
 // sort_small_list.c
+void		ft_apply_rotates_mixed(t_conf *stk, t_list **dst, t_list **src);
 void		ft_sort_three_list(t_list **l);
 void		ft_sort_four_list(t_list **lst_a, t_list **lst_b);
 void		ft_sort_five_list(t_list **lst_a, t_list **lst_b);
 
 // push_swap.c
-void		push_swap(t_list **lst_a, t_list **lst_b);
+void		ft_eco_sending(t_list **dst, t_list **src);
 
 // main.c
+int			ft_give_biggest(int nb1, int nb2);
 int			ft_input_errors(int argc, char *argv[]);
+void		push_swap(t_list **lst_a, t_list **lst_b);
 int			main(int argc, char *argv[]);
 
 #endif
