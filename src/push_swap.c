@@ -125,11 +125,6 @@ void	ft_eco_sending(t_list **dst, t_list **src)
 	else if (stack.min_mv_nb >= 0)
 		ft_apply_rotates(&stack, dst, src);
 	else
-<<<<<<< HEAD
-		ft_apply_rotates_rev(&stack, dst, src);
-	push(dst, src, 'b');
-}
-=======
 		apply_rotates_rev(&stack, dst, src);
 	push(dst, src, 'a');
 }
@@ -159,4 +154,3 @@ void	push_swap(t_list **lst_a, t_list **lst_b)
 		return ;
 	}
 }
->>>>>>> opposite_way
