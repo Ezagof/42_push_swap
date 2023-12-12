@@ -6,7 +6,11 @@
 /*   By: aautin <aautin@student.42.fr >             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 15:59:23 by aautin            #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2023/12/12 18:12:39 by aautin           ###   ########.fr       */
+=======
+/*   Updated: 2023/12/12 22:15:15 by aautin           ###   ########.fr       */
+>>>>>>> opposite_way
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,12 +76,12 @@ static void	ft_apply_rotates_rev(t_conf *stk, t_list **dst, t_list **src)
 	}
 	while (stk->rotate_src)
 	{
-		rotate_rev(src, 'a');
+		rotate_rev(src, 'b');
 		(stk->rotate_src)--;
 	}
 	while (stk->rotate_dst)
 	{
-		rotate_rev(dst, 'b');
+		rotate_rev(dst, 'a');
 		(stk->rotate_dst)--;
 	}
 }
@@ -92,12 +96,12 @@ static void	ft_apply_rotates(t_conf *stk, t_list **dst, t_list **src)
 	}
 	while (stk->rotate_src)
 	{
-		rotate(src, 'a');
+		rotate(src, 'b');
 		(stk->rotate_src)--;
 	}
 	while (stk->rotate_dst)
 	{
-		rotate(dst, 'b');
+		rotate(dst, 'a');
 		(stk->rotate_dst)--;
 	}
 }
@@ -121,6 +125,38 @@ void	ft_eco_sending(t_list **dst, t_list **src)
 	else if (stack.min_mv_nb >= 0)
 		ft_apply_rotates(&stack, dst, src);
 	else
+<<<<<<< HEAD
 		ft_apply_rotates_rev(&stack, dst, src);
 	push(dst, src, 'b');
 }
+=======
+		apply_rotates_rev(&stack, dst, src);
+	push(dst, src, 'a');
+}
+
+void	push_swap(t_list **lst_a, t_list **lst_b)
+{
+	if (ft_lstsize(*lst_a) == 1)
+		return ;
+	if (ft_lstsize(*lst_a) == 2)
+	{
+		if ((*lst_a)->value > (*lst_a)->next->value)
+			rotate(lst_a, 'a');
+	}
+	else if (ft_lstsize(*lst_a) == 3)
+		ft_sort_three_list(lst_a);
+	else if (ft_lstsize(*lst_a) == 4)
+		ft_sort_four_list(lst_a, lst_b);
+	else if (ft_lstsize(*lst_a) == 5)
+		ft_sort_five_list(lst_a, lst_b);
+	else
+	{
+		while (ft_lstsize(*lst_a) > 0)
+			push(lst_b, lst_a, 'b');
+		while (ft_lstsize(*lst_b) > 0)
+			ft_eco_sending(lst_a, lst_b);
+		ft_placemintop(lst_a);
+		return ;
+	}
+}
+>>>>>>> opposite_way

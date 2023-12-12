@@ -6,7 +6,11 @@
 /*   By: aautin <aautin@student.42.fr >             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 17:09:34 by aautin            #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2023/12/12 16:19:38 by aautin           ###   ########.fr       */
+=======
+/*   Updated: 2023/12/12 22:11:49 by aautin           ###   ########.fr       */
+>>>>>>> opposite_way
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +67,7 @@ int			ft_abs(int nb);
 int			ft_i_place(t_list *lst, int value);
 int			ft_indexmin(t_list *lst);
 int			ft_indexmax(t_list *lst);
-void		ft_placemaxtop(t_list **lst);
+void		ft_placemintop(t_list **lst);
 
 // input_errors.c
 int			ft_nbs_combined(char *argv);
