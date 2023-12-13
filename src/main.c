@@ -6,7 +6,7 @@
 /*   By: aautin <aautin@student.42.fr >             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 17:17:25 by aautin            #+#    #+#             */
-/*   Updated: 2023/12/13 11:50:36 by aautin           ###   ########.fr       */
+/*   Updated: 2023/12/13 12:27:49 by aautin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	push_swap(t_list **lst_a, t_list **lst_b)
 	{
 		while (ft_lstsize(*lst_a) > 0)
 			ft_eco_sending(lst_b, lst_a);
-		ft_placemintop(lst_b);
+		ft_placemaxtop(lst_b);
 		while (ft_lstsize(*lst_b) > 0)
 			push(lst_a, lst_b, 'a');
 		return ;

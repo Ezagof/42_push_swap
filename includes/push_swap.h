@@ -6,7 +6,7 @@
 /*   By: aautin <aautin@student.42.fr >             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 17:09:34 by aautin            #+#    #+#             */
-/*   Updated: 2023/12/13 12:14:40 by aautin           ###   ########.fr       */
+/*   Updated: 2023/12/13 12:27:59 by aautin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ typedef struct s_conf
 	int			rotate_dst;
 	int			min_top;
 	int			min_bot;
-	int			min_is_mixed;
 }				t_conf;
 
 // swap.c
@@ -63,7 +62,7 @@ int			ft_abs(int nb);
 int			ft_i_place(t_list *lst, int value);
 int			ft_indexmin(t_list *lst);
 int			ft_indexmax(t_list *lst);
-void		ft_placemintop(t_list **lst);
+void		ft_placemaxtop(t_list **lst);
 
 // input_errors.c
 int			ft_nbs_combined(char *argv);
