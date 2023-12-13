@@ -2,8 +2,6 @@ NAME		=	push_swap
 
 LIB			=	libft.a
 
-MAIN		=	main.c
-
 SRC			=	src/push_swap.c			\
 				src/sort_small_list.c	\
 				src/utils.c				\
@@ -22,23 +20,30 @@ RM			=	rm -f
 
 FLG			=	-Wall -Wextra -Werror
 
-$(NAME)	:	$(OBJ)
-			make -C libft
-			cp libft/libft.a $(LIB)
-			cc $(FLG) $(OBJ) -o $(NAME) $(LIB)
+$(NAME)		:	$(OBJ)
+				make -C libft
+				cp libft/libft.a $(LIB)
+				cc $(FLG) $(OBJ) -o $(NAME) $(LIB)
 
-.PHONY	:	all clean fclean re
+.PHONY		:	all clean fclean re libclean libfclean
 
-%.o		:	%.c
-			cc $(FLG) -c $< -o $@ -g3
+%.o			:	%.c
+				cc $(FLG) -c $< -o $@
 
-all		:	$(NAME)
+all			:	$(NAME)
 
-clean	:
-			$(RM) $(OBJ)
+clean		:
+				$(RM) $(OBJ)
+				$(RM) $(LIB)
 
-fclean	:	clean
-			$(RM) $(NAME)
+fclean		:	clean
+				$(RM) $(NAME)
 
-re		:	fclean 
-			make
+re			:	fclean 
+				make
+
+libclean	:	
+				make clean -C libft
+
+libfclean	:
+				make fclean -C libft
