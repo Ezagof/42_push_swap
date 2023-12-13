@@ -1,10 +1,6 @@
 NAME		=	push_swap
 
-NAME_B		=	checker
-
 LIB			=	libft.a
-
-MAIN		=	main.c
 
 SRC			=	src/push_swap.c			\
 				src/sort_small_list.c	\
@@ -19,8 +15,6 @@ SRC			=	src/push_swap.c			\
 				src/main.c
 
 OBJ			=	$(SRC:.c=.o)
-
-OBJ_B		=	$(SRC_B:.c=.o)
 
 RM			=	rm -f
 
