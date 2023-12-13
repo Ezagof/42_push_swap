@@ -6,7 +6,7 @@
 /*   By: aautin <aautin@student.42.fr >             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 17:17:25 by aautin            #+#    #+#             */
-/*   Updated: 2023/12/13 12:27:49 by aautin           ###   ########.fr       */
+/*   Updated: 2023/12/13 14:54:23 by aautin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ void	push_swap(t_list **lst_a, t_list **lst_b)
 		if ((*lst_a)->value > (*lst_a)->next->value)
 			rotate(lst_a, 'a');
 	}
+	if (ft_islstsorted(*lst_a))
+		return ;
 	else if (ft_lstsize(*lst_a) == 3)
 		ft_sort_three_list(lst_a);
 	else if (ft_lstsize(*lst_a) == 4)

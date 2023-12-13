@@ -6,7 +6,7 @@
 /*   By: aautin <aautin@student.42.fr >             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 15:59:23 by aautin            #+#    #+#             */
-/*   Updated: 2023/12/13 12:31:51 by aautin           ###   ########.fr       */
+/*   Updated: 2023/12/13 14:55:19 by aautin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,4 +91,15 @@ void	ft_eco_sending(t_list **dst, t_list **src)
 	else
 		ft_apply_rotates_rev(&stack, dst, src);
 	push(dst, src, 'b');
+}
+
+int	ft_islstsorted(t_list *lst)
+{
+	while (lst->next)
+	{
+		if (lst->value > lst->next->value)
+			return (0);
+		lst = lst->next;
+	}
+	return (1);
 }

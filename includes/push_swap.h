@@ -6,7 +6,7 @@
 /*   By: aautin <aautin@student.42.fr >             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 17:09:34 by aautin            #+#    #+#             */
-/*   Updated: 2023/12/13 12:27:59 by aautin           ###   ########.fr       */
+/*   Updated: 2023/12/13 14:55:35 by aautin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ void		ft_sort_four_list(t_list **lst_a, t_list **lst_b);
 void		ft_sort_five_list(t_list **lst_a, t_list **lst_b);
 
 // push_swap.c
+int			ft_islstsorted(t_list *lst);
 void		ft_eco_sending(t_list **dst, t_list **src);
 
 // main.c
