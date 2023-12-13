@@ -6,7 +6,11 @@
 /*   By: aautin <aautin@student.42.fr >             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 17:09:34 by aautin            #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2023/12/13 11:50:23 by aautin           ###   ########.fr       */
+=======
+/*   Updated: 2023/12/13 12:05:25 by aautin           ###   ########.fr       */
+>>>>>>> 4ebf333
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +28,7 @@ typedef struct s_conf
 	t_list		*first;
 	int			i;
 	int			min_i;
-	int 		max_i;
+	int			max_i;
 	int			min_mv_nb;
 	int			mv_nb;
 	int			rotate_src;
