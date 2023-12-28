@@ -6,7 +6,7 @@
 /*   By: aautin <aautin@student.42.fr >             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 17:17:25 by aautin            #+#    #+#             */
-/*   Updated: 2023/12/28 16:00:31 by aautin           ###   ########.fr       */
+/*   Updated: 2023/12/28 16:31:47 by aautin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	push_swap(t_list **lst_a, t_list **lst_b)
 	else
 	{
 		while (ft_lstsize(*lst_a) > 4)
-			push(lst_b, lst_a, 'b');
+			ft_eco_sending_rev(lst_b, lst_a, 'b', 'a');
 		ft_sort_four_list(lst_a, lst_b);
 		while (ft_lstsize(*lst_b) > 0)
 			ft_eco_sending(lst_a, lst_b, 'a', 'b');

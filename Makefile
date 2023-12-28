@@ -6,6 +6,7 @@ SRC			=	src/push_swap.c			\
 				src/sort_small_list.c	\
 				src/utils.c				\
 				src/utils_2.c			\
+				src/utils_3.c			\
 				src/swap.c				\
 				src/push.c				\
 				src/rotate.c			\

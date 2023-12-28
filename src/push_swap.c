@@ -6,7 +6,7 @@
 /*   By: aautin <aautin@student.42.fr >             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 15:59:23 by aautin            #+#    #+#             */
-/*   Updated: 2023/12/28 15:40:40 by aautin           ###   ########.fr       */
+/*   Updated: 2023/12/28 16:39:20 by aautin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,13 +95,26 @@ void	ft_eco_sending(t_list **dst, t_list **src, char d_name, char s_name)
 	push(dst, src, d_name);
 }
 
-int	ft_islstsorted(t_list *lst)
+void	ft_eco_sending_rev(t_list **dst, t_list **src, char d_name, char s_name)
 {
-	while (lst->next)
+	t_conf	stack;
+
+	stack.d_name = d_name;
+	stack.s_name = s_name;
+	stack.first = *src;
+	stack.min_mv_nb = ft_lstsize(*src) + ft_lstsize(*dst);
+	stack.i = 0;
+	while (*src)
 	{
-		if (lst->value > lst->next->value)
-			return (0);
-		lst = lst->next;
+		ft_cheapest(&stack, ft_i_place_rev(*dst, (*src)->value),
+			ft_lstsize(*dst));
+		*src = (*src)->next;
+		(stack.i)++;
 	}
-	return (1);
+	*src = stack.first;
+	if (stack.min_mv_nb >= 0)
+		ft_apply_rotates(&stack, dst, src);
+	else
+		ft_apply_rotates_rev(&stack, dst, src);
+	push(dst, src, d_name);
 }

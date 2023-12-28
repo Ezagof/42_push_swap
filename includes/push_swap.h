@@ -6,7 +6,7 @@
 /*   By: aautin <aautin@student.42.fr >             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 17:09:34 by aautin            #+#    #+#             */
-/*   Updated: 2023/12/28 16:10:00 by aautin           ###   ########.fr       */
+/*   Updated: 2023/12/28 16:21:43 by aautin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,10 +61,14 @@ int			ft_free_dbtab(char **str, int i);
 int			ft_abs(int nb);
 
 // utils_2.c
-int			ft_i_place(t_list *lst, int value);
+int			ft_islstsorted(t_list *lst);
 int			ft_indexmin(t_list *lst);
 int			ft_indexmax(t_list *lst);
 void		ft_placemintop(t_list **lst, char lst_name);
+
+// utils_3.c
+int			ft_i_place(t_list *lst, int value);
+int			ft_i_place_rev(t_list *lst, int value);
 
 // input_errors.c
 int			ft_nbs_combined(char *argv);
@@ -78,8 +82,8 @@ void		ft_sort_four_list(t_list **lst_a, t_list **lst_b);
 void		ft_sort_five_list(t_list **lst_a, t_list **lst_b);
 
 // push_swap.c
-int			ft_islstsorted(t_list *lst);
 void		ft_eco_sending(t_list **dst, t_list **src, char d_nm, char s_nm);
+void		ft_eco_sending_rev(t_list **d, t_list **s, char d_nm, char s_nm);
 
 // main.c
 int			ft_give_biggest(int nb1, int nb2);
