@@ -6,7 +6,7 @@
 /*   By: aautin <aautin@student.42.fr >             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 17:09:34 by aautin            #+#    #+#             */
-/*   Updated: 2023/12/13 14:55:35 by aautin           ###   ########.fr       */
+/*   Updated: 2023/12/28 16:10:00 by aautin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ typedef struct s_conf
 	int			rotate_dst;
 	int			min_top;
 	int			min_bot;
+	char		d_name;
+	char		s_name;
 }				t_conf;
 
 // swap.c
@@ -62,7 +64,7 @@ int			ft_abs(int nb);
 int			ft_i_place(t_list *lst, int value);
 int			ft_indexmin(t_list *lst);
 int			ft_indexmax(t_list *lst);
-void		ft_placemaxtop(t_list **lst);
+void		ft_placemintop(t_list **lst, char lst_name);
 
 // input_errors.c
 int			ft_nbs_combined(char *argv);
@@ -77,7 +79,7 @@ void		ft_sort_five_list(t_list **lst_a, t_list **lst_b);
 
 // push_swap.c
 int			ft_islstsorted(t_list *lst);
-void		ft_eco_sending(t_list **dst, t_list **src);
+void		ft_eco_sending(t_list **dst, t_list **src, char d_nm, char s_nm);
 
 // main.c
 int			ft_give_biggest(int nb1, int nb2);

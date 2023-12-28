@@ -6,7 +6,7 @@
 /*   By: aautin <aautin@student.42.fr >             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 15:59:23 by aautin            #+#    #+#             */
-/*   Updated: 2023/12/13 14:55:19 by aautin           ###   ########.fr       */
+/*   Updated: 2023/12/28 15:40:40 by aautin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,12 @@ static void	ft_apply_rotates_rev(t_conf *stk, t_list **dst, t_list **src)
 	}
 	while (stk->rotate_src)
 	{
-		rotate_rev(src, 'a');
+		rotate_rev(src, stk->s_name);
 		(stk->rotate_src)--;
 	}
 	while (stk->rotate_dst)
 	{
-		rotate_rev(dst, 'b');
+		rotate_rev(dst, stk->d_name);
 		(stk->rotate_dst)--;
 	}
 }
@@ -62,20 +62,22 @@ static void	ft_apply_rotates(t_conf *stk, t_list **dst, t_list **src)
 	}
 	while (stk->rotate_src)
 	{
-		rotate(src, 'a');
+		rotate(src, stk->s_name);
 		(stk->rotate_src)--;
 	}
 	while (stk->rotate_dst)
 	{
-		rotate(dst, 'b');
+		rotate(dst, stk->d_name);
 		(stk->rotate_dst)--;
 	}
 }
 
-void	ft_eco_sending(t_list **dst, t_list **src)
+void	ft_eco_sending(t_list **dst, t_list **src, char d_name, char s_name)
 {
 	t_conf	stack;
 
+	stack.d_name = d_name;
+	stack.s_name = s_name;
 	stack.first = *src;
 	stack.min_mv_nb = ft_lstsize(*src) + ft_lstsize(*dst);
 	stack.i = 0;
@@ -90,7 +92,7 @@ void	ft_eco_sending(t_list **dst, t_list **src)
 		ft_apply_rotates(&stack, dst, src);
 	else
 		ft_apply_rotates_rev(&stack, dst, src);
-	push(dst, src, 'b');
+	push(dst, src, d_name);
 }
 
 int	ft_islstsorted(t_list *lst)

@@ -6,7 +6,7 @@
 /*   By: aautin <aautin@student.42.fr >             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 15:59:33 by aautin            #+#    #+#             */
-/*   Updated: 2023/12/13 12:30:25 by aautin           ###   ########.fr       */
+/*   Updated: 2023/12/28 15:59:09 by aautin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static void	ft_setup(t_conf *stack, t_list **lst)
 	stack->first = *lst;
 	stack->min_i = ft_indexmin(*lst);
 	stack->max_i = ft_indexmax(*lst);
-	while (stack->i < stack->max_i)
+	while (stack->i < stack->min_i)
 	{
 		(*lst) = (*lst)->next;
 		(stack->i)++;
@@ -34,18 +34,18 @@ int	ft_i_place(t_list *lst, int value)
 	ft_setup(&stack, &lst);
 	while (lst)
 	{
-		if (value > lst->value)
+		if (value < lst->value)
 			return (stack.i);
 		lst = lst->next;
 		(stack.i)++;
 	}
-	if (stack.i > stack.min_i)
+	if (stack.i > stack.max_i)
 	{
 		stack.i = 0;
 		lst = stack.first;
-		while (stack.i <= stack.min_i)
+		while (stack.i <= stack.max_i)
 		{
-			if (value > lst->value)
+			if (value < lst->value)
 				return (stack.i);
 			lst = lst->next;
 			(stack.i)++;
@@ -98,16 +98,16 @@ int	ft_indexmin(t_list *lst)
 	return (indexmin);
 }
 
-void	ft_placemaxtop(t_list **lst)
+void	ft_placemintop(t_list **lst, char lst_name)
 {
 	int	i_max;
 
-	i_max = ft_indexmax(*lst);
+	i_max = ft_indexmin(*lst);
 	if (i_max > ft_lstsize(*lst) / 2)
 	{
 		while (i_max < ft_lstsize(*lst))
 		{
-			rotate_rev(lst, 'b');
+			rotate_rev(lst, lst_name);
 			i_max++;
 		}
 	}
@@ -115,7 +115,7 @@ void	ft_placemaxtop(t_list **lst)
 	{
 		while (i_max)
 		{
-			rotate(lst, 'b');
+			rotate(lst, lst_name);
 			i_max--;
 		}
 	}
